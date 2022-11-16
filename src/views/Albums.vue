@@ -21,9 +21,27 @@ export default {
                     id: song.album,
                     songs: []
                 }
-                albums.push(song.album);
+                if (albums.filter(album => album.id === song.album.id).length > 0 == false) {
+                    albums.push(song.album);
+                }
             });
             return albums;
+        }
+    },
+    methods: {
+        artistNames(artists) {
+            var artist = "";
+            artists.forEach((artist, index) => {
+                if (index == Object.keys(artists).length - 1) {
+                    artist = artist.name;
+                } else {
+                    artist = artist.name + ", ";
+                }
+            });
+            return artist;
+        },
+        albumYear(date) {
+            return date.split('-')[0];
         }
     }
 }
@@ -40,12 +58,12 @@ export default {
     </div>
     <ul id="list-albums" :class="{grid: gridIcon}">
         <li class="album" v-for="(album) in albums">
-            <img id="img-album" src="https://i.scdn.co/image/ab67616d00001e02980c9d288a180838cd12ad24" />
+            <img id="img-album" :src="album.images[1].url"/>
             <div class="album-info">
-                <h4 id="txt-album-name">We May Grow Old But We Never Grow Up</h4>
-                <p id="txt-album-artists">Example</p>
+                <h4 id="txt-album-name">{{album.name}}</h4>
+                <p id="txt-album-artists">{{ artistNames(album.artists) }}</p>
                 <div class="album-year">
-                    <p id="txt-album-year">2022</p>
+                    <p id="txt-album-year">{{ albumYear(album.release_date) }}</p>
                     <p id="txt-album-tracks">2</p>
                 </div>
             </div>
