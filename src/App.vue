@@ -1,22 +1,23 @@
+<script>
+import { auth } from './stores/auth'
+import NavigationComponent from './components/NavigationComponent.vue'
+export default {
+    components: { NavigationComponent },
+    data() {
+        return {
+            auth
+        }
+    }
+}
+</script>
+
 <template>
-    <Header></Header>
+    <Header v-if="auth.is_authenticated"></Header>
     <div id="section-body">
-        <nav id="nav-main" class="wrapper-navigation">
-            <ol>
-                <li>
-                    <a href="/">SONGS</a>
-                </li>
-                <li>
-                    <a href="/albums">ALBUMS</a>
-                </li>
-                <li>
-                    <a href="/about">ABOUT</a>
-                </li>
-            </ol>
-        </nav>
+        <NavigationComponent v-if="auth.is_authenticated" />
         <router-view class="section-router"></router-view>
     </div>
-    <div id="section-player">
+    <div id="section-player" v-if="auth.is_authenticated">
         <AudioPlayer />
     </div>
 </template>
