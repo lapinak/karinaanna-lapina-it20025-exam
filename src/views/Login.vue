@@ -25,7 +25,7 @@ export default {
                 <img src="@/assets/logo.svg" />
                 <div>KRAKEN.FM</div>
             </div>
-            <input type="text" id="input-email" placeholder="Email" v-model="email" />
+            <input id="input-email" placeholder="Email" v-model="email" />
             <input type="password" id="input-password" placeholder="Password" v-model="password" />
             <button id="btn-submit" :disabled="isDisabled" @click="auth.authenticate(email, password)">LOGIN</button>
         </form>
