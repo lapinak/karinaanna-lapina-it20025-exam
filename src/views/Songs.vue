@@ -1,4 +1,6 @@
 <script>
+import { auth } from '../stores/auth';
+
 </script>
 
 <template>
@@ -9,7 +11,8 @@
             <input id="input-search" v-model="search" placeholder="Search by title..." />
         </div>
         <div class="wrapper-settings">
-            <button id="btn-show-favorites">Show Favorites</button>
+            <button id="btn-show-favorites" @click="show_favorites ? show_favorites = true : show_favorites = false" 
+            v-bind:class="{active: show_favorites}">Show Favorites</button>
         </div>
     </div>
     <div class="wrapper-songs">
