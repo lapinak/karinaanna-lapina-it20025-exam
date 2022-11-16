@@ -1,13 +1,29 @@
 <script>
 import IconGrid from '../components/icons/IconGrid.vue';
 import IconList from '../components/icons/IconList.vue';
+import songList from '../data/songs';
 
 export default {
     components: {IconGrid, IconList},
     data () {
         return {
-            isIconGrid: false,
-            isIconList: true
+            gridIcon: false,
+            listIcon: true,
+            songs: songList
+        }
+    },
+    computed: {
+        albums() {
+            var albums = [];
+
+            this.songs.forEach(song => {
+                var songObj = {
+                    id: song.album,
+                    songs: []
+                }
+                albums.push(song.album);
+            });
+            return albums;
         }
     }
 }
@@ -18,12 +34,12 @@ export default {
     <div class="wrapper-header">
         <h1>ALBUMS</h1>
         <div class="settings">
-            <button id="btn-grid" @click="isIconGrid ? isIconGrid = false : isIconGrid = true, isIconList = false" v-bind:class="{active: isIconGrid}"><IconGrid/>></button>
-            <button id="btn-list" @click="isIconList ? isIconList = false : isIconList = true, isIconGrid = false" v-bind:class="{active: isIconList}"><IconList/></button>
+            <button id="btn-grid" @click="gridIcon ? gridIcon = false : gridIcon = true, listIcon = false" v-bind:class="{active: gridIcon}"><IconGrid/>></button>
+            <button id="btn-list" @click="listIcon ? listIcon = false : listIcon = true, gridIcon = false" v-bind:class="{active: listIcon}"><IconList/></button>
         </div>
     </div>
-    <ul id="list-albums">
-        <li class="album">
+    <ul id="list-albums" :class="{grid: gridIcon}">
+        <li class="album" v-for="(album) in albums">
             <img id="img-album" src="https://i.scdn.co/image/ab67616d00001e02980c9d288a180838cd12ad24" />
             <div class="album-info">
                 <h4 id="txt-album-name">We May Grow Old But We Never Grow Up</h4>
