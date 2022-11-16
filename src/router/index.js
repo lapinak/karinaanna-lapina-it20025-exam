@@ -39,9 +39,9 @@ const router = createRouter({
 // arguments to glabā adresi uz kurieni gribam iet
 // arguments from glabā adresi no kurienes mēs nākam
 router.beforeEach((to, from) => {
-    if (auth.is_authenticated === false && to.path != "/login") {
+    if (auth.is_authenticated == false && to.path != "/login") {
         return "/login";
-    } else if (auth.is_authenticated === true && to.path == "/login") {
+    } else if (auth.is_authenticated == true && to.path == "/login") {
         return from ? from.path : "/login";
     }
 })

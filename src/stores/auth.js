@@ -1,12 +1,12 @@
 import { reactive } from 'vue';
-//import router from '..router';
+import router from '../router';
 
 export const auth = reactive({
     user: {
-        name: "Karīna Anna",
-        surname: "Lapiņa",
-        code: "IT20025",
-        favorite_songs: localStorage.getItem("favorite_songs") ?? []
+        name: localStorage.getItem("name") ?? "Karina",
+        surname: localStorage.getItem("surname") ?? "Lapina",
+        code: localStorage.getItem("code") ?? "IT20025",
+        favorite_songs: localStorage.getItem("faveSongs") ?? []
     },
 
     // TE DEFINĒT USER OBJEKTU
@@ -14,23 +14,26 @@ export const auth = reactive({
     is_authenticated: localStorage.is_authenticated ?? false,
 
     setUserData(name, surname, code) { 
+        localStorage.setItem("name", name);
         this.user.name = name;
+        localStorage.setItem("surname", surname);
         this.user.surname = surname;
+        localStorage.setItem("code", code);
         this.user.code = code;
     },
 
     authenticate(email, password) {
-        if (email === "karinaanna.lapina@va.lv" && password === "godbless") {
+        if (email === "karinaanna.lapina@va.lv" && password === "123456") {
             localStorage.is_authenticated = true;
             this.is_authenticated = true;
-            router.replace({ path: '/' })
+            router.replace('/')
         }
     },
 
     logout() {
         localStorage.clear();
         this.is_authenticated = false;
-        router.replace({ path: '/login' })
+        router.replace('/login')
     },
 
     toggleFavorite(songID) {
@@ -40,7 +43,7 @@ export const auth = reactive({
             this.user.favorite_songs.pop(songID);
         }
 
-        localStorage.setItem("favorite_songs", this.user.favorite_songs);
+        localStorage.setItem("faveSongs", this.user.favorite_songs);
     },
 
     getFavoriteSongs() {
