@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { auth } from '../stores/auth';
 
 // Importējam vēlamos skatus kurus gribam izmantot
-import Login from '@/views/Login.vue'
+import Login from '@/views/Login.vue';
+import Songs from '@/views/Songs.vue'
 
 // Definējam routes datu masīvu
 // Katrs objekts iekš šī datu masīva kalpo kā rūtera adrese
@@ -12,6 +13,10 @@ const routes = [
     {
         path: '/login',
         component: Login,
+    },
+    {
+        path: '/',
+        component: Songs,
     }
 ]
 
