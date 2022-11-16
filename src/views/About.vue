@@ -36,10 +36,10 @@ export default {
             this.groupOne = true;
             this.groupTwo = false;
         },
-        cancelButton() {
-            this.groupOne = false;
-            this.groupTwo = true;
-        },
+        // cancelButton() {
+        //     this.groupOne = false;
+        //     this.groupTwo = true;
+        // },
         saveButton() {
             this.groupOne = false;
             this.groupTwo = true;
