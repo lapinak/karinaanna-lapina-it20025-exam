@@ -9,7 +9,7 @@ export default {
 }
 </script>
 
-<!-- <template>
+<template>
   <nav id="nav-main" class="wrapper-navigation">
     <ol>
       <li v-for="address in addresses">
@@ -17,4 +17,4 @@ export default {
       </li>
     </ol>
   </nav>
-</template> -->
+</template>

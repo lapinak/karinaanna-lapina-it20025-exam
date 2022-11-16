@@ -23,7 +23,7 @@ export const auth = reactive({
     },
 
     authenticate(email, password) {
-        if (email === "karinaanna.lapina@va.lv" && password === "123456") {
+        if (email === "karinaanna.lapina@va.lv" && password === "godbless") {
             localStorage.is_authenticated = true;
             this.is_authenticated = true;
             router.replace('/')
