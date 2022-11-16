@@ -3,8 +3,8 @@ import router from '../router';
 
 export const auth = reactive({
     user: {
-        name: localStorage.getItem("name") ?? "Karina",
-        surname: localStorage.getItem("surname") ?? "Lapina",
+        name: localStorage.getItem("name") ?? "Karīna Anna",
+        surname: localStorage.getItem("surname") ?? "Lapiņa",
         code: localStorage.getItem("code") ?? "IT20025",
         favorite_songs: localStorage.getItem("faveSongs") ?? []
     },
